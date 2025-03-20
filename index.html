@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinod Jha - Data Scientist Portfolio</title>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #64748b;
+            --light: #f8fafc;
+            --dark: #0f172a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            padding: 6rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            margin-right: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        section {
+            padding: 4rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-image {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-tag {
+            background-color: var(--light);
+            color: var(--secondary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        .experience {
+            margin-bottom: 3rem;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-left: 1rem;
+            border-left: 2px solid var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.5rem;
+            top: 0.5rem;
+            width: 1rem;
+            height: 1rem;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .publications {
+            margin-bottom: 2rem;
+        }
+        
+        .publication {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.5rem;
+        }
+        
+        .publication-title {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-authors {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .publication-journal {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .certificate {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1rem;
+        }
+        
+        .certificate-icon {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        .certificate-content {
+            flex: 1;
+        }
+        
+        .certificate-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .certificate-issuer {
+            color: var(--secondary);
+            font-size: 0.875rem;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-link:hover {
+            color: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            
+            .hero-image img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Vinod Jha</div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#experience">Experience</a>
+                    <a href="#publications">Publications</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="about">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <div class="subtitle">Hello, I'm</div>
+                    <h1>Vinod Jha</h1>
+                    <p class="subtitle">Data Scientist | AI Engineer</p>
+                    <p>Highly analytical and results-oriented Data Scientist with a strong background in machine learning, statistical analysis, and programming. Proven ability to develop and implement data-driven solutions to complex problems, with a focus on delivering actionable insights and driving business impact. Skilled in Python, SQL, and various machine learning libraries, with experience in cloud technologies and DevOps practices.</p>
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/400" alt="Vinod Jha Profile Picture">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills & Expertise</h2>
+                <p>My technical toolkit and specialized expertise.</p>
+            </div>
+            
+            <h3>Programming Languages & Tools</h3>
+            <div class="skills">
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">SQL</div>
+                <div class="skill-tag">R</div>
+                <div class="skill-tag">OOP</div>
+                <div class="skill-tag">ETL Pipelines</div>
+            </div>
+            
+            <h3>Machine Learning & AI</h3>
+            <div class="skills">
+                <div class="skill-tag">TensorFlow</div>
+                <div class="skill-tag">PyTorch</div>
+                <div class="skill-tag">Scikit-Learn</div>
+                <div class="skill-tag">Regression</div>
+                <div class="skill-tag">Forecasting</div>
+                <div class="skill-tag">Clustering</div>
+                <div class="skill-tag">Classification</div>
+                <div class="skill-tag">Anomaly Detection</div>
+                <div class="skill-tag">LLMs</div>
+                <div class="skill-tag">Experimental Designs</div>
+                <div class="skill-tag">Computer Vision</div>
+                <div class="skill-tag">NLP</div>
+            </div>
+            
+            <h3>Cloud & DevOps</h3>
+            <div class="skills">
+                <div class="skill-tag">Microsoft Azure</div>
+                <div class="skill-tag">Google Cloud</div>
+                <div class="skill-tag">Docker</div>
+                <div class="skill-tag">CI/CD Pipelines</div>
+                <div class="skill-tag">Render Deployment</div>
+                <div class="skill-tag">Databricks</div>
+                <div class="skill-tag">Git</div>
+                <div class="skill-tag">BigQuery</div>
+            </div>
+            
+            <h3>Data & Analytics</h3>
+            <div class="skills">
+                <div class="skill-tag">Tableau</div>
+                <div class="skill-tag">Matplotlib</div>
+                <div class="skill-tag">Data Pipelines</div>
+                <div class="skill-tag">Pandas</div>
+                <div class="skill-tag">Data Preparation</div>
+                <div class="skill-tag">Topic Modeling</div>
+            </div>
+
+            <h3>Web Development</h3>
+            <div class="skills">
+                <div class="skill-tag">FastAPI</div>
+                <div class="skill-tag">Flask</div>
+                <div class="skill-tag">Django</div>
+                <div class="skill-tag">HTML</div>
+                <div class="skill-tag">CSS</div>
+                <div class="skill-tag">REST API</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>A selection of my data science and machine learning projects.</p>
+            </div>
+            
+            <div class="projects">
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Image Classification API" class="project-image">
+                    <div class="project-content">
+                        <h3>ML-Powered Image Classification API</h3>
+                        <p>Built a backend API for real-time CNN-based image recognition, leveraging FastAPI for the backend, TensorFlow for the machine learning model, and PostgreSQL for data storage.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">FastAPI</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">PostgreSQL</span>
+                            <span class="project-tag">CNN</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Salary Prediction" class="project-image">
+                    <div class="project-content">
+                        <h3>Salary Prediction Deployment</h3>
+                        <p>Created and deployed a regression-based salary predictor on Render cloud platform, using Flask for the web application and Scikit-learn for the machine learning model.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">Scikit-learn</span>
+                            <span class="project-tag">Render Cloud</span>
+                            <span class="project-tag">Regression</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Sentiment Analysis" class="project-image">
+                    <div class="project-content">
+                        <h3>Sentiment Analysis API</h3>
+                        <p>Developed an NLP-based REST API to classify customer feedback sentiments using Flask for the backend, Hugging Face transformers for sentiment analysis, and SQLite for database storage.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Flask</span>
+                            <span class="project-tag">Hugging Face</span>
+                            <span class="project-tag">SQLite</span>
+                            <span class="project-tag">NLP</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Movie Recommendation" class="project-image">
+                    <div class="project-content">
+                        <h3>Movie Recommendation System</h3>
+                        <p>Implemented a content-based recommendation engine to provide personalized movie suggestions using Python, Scikit-learn for the recommendation algorithm, and Streamlit for the user interface.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">Scikit-learn</span>
+                            <span class="project-tag">Streamlit</span>
+                            <span class="project-tag">Recommender Systems</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Object Detection" class="project-image">
+                    <div class="project-content">
+                        <h3>Object Detection with OpenCV</h3>
+                        <p>Created a computer vision application for real-time object detection using Python, OpenCV for image processing, TensorFlow for the neural network, and YOLO for the object detection algorithm.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Python</span>
+                            <span class="project-tag">OpenCV</span>
+                            <span class="project-tag">TensorFlow</span>
+                            <span class="project-tag">YOLO</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <img src="/api/placeholder/400/250" alt="Braille Transliteration" class="project-image">
+                    <div class="project-content">
+                        <h3>Braille Transliteration System</h3>
+                        <p>Developed a machine learning system for Braille transliteration of Indian regional languages, based on my PhD research. This system can recognize handwritten text and convert it to Braille.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Machine Learning</span>
+                            <span class="project-tag">Character Recognition</span>
+                            <span class="project-tag">Image Processing</span>
+                            <span class="project-tag">Feature Selection</span>
+                        </div>
+                        <a href="https://github.com/vinodjha1988" class="btn" style="margin-top: 1rem;">View Project</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Professional Experience</h2>
+                <p>My journey in data science, AI, and academia.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">January 2024 - Present</div>
+                    <h3>AI Training Engineer</h3>
+                    <p>DataAnnotation.tech (Remote)</p>
+                    <ul>
+                        <li>Developed and optimized interactive prompts for large language models (LLMs), improving accuracy in AI-generated responses.</li>
+                        <li>Evaluated ML/DL models to enhance code-generation, code review, and unit testing capabilities for programming tasks.</li>
+                        <li>Conducted data preprocessing and NLP-based analysis to improve text processing AI solutions.</li>
+                    </ul>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">July 2010 - January 2024</div>
+                    <h3>Assistant Professor</h3>
+                    <p>KIIT University, Bhubaneswar, India</p>
+                    <ul>
+                        <li>Developed AI-powered applications for image classification, NLP, and data analytics.</li>
+                        <li>Mentored students in machine learning & backend API development.</li>
+                        <li>Conducted research in Machine learning's applications in computer vision.</li>
+                        <li>Faculty In-charge, Alumni Affairs: Enhanced engagement and outcomes resulting in approximately 700% increase in active members in the last 3 years of my tenure.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>My academic qualifications and learning journey.</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2021</div>
+                    <h3>PhD in Machine Learning</h3>
+                    <p>KIIT University</p>
+                    <p>Thesis: "Braille transliteration of Indian regional languages using machine learning techniques"</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2018</div>
+                    <h3>Post Graduate Diploma in Data Science</h3>
+                    <p>IIIT Bangalore</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2010</div>
+                    <h3>MTech in Signal Processing</h3>
+                    <p>IIT Guwahati</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 3rem;">
+                <h3>Certifications</h3>
+                <div style="margin-top: 1.5rem;">
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Introduction to Generative AI</div>
+                            <div class="certificate-issuer">Duke University, February 2025</div>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Create Machine Learning Models in Microsoft Azure</div>
+                            <div class="certificate-issuer">Microsoft, March 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Docker for Absolute Beginners</div>
+                            <div class="certificate-issuer">Coursera, February 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Exploring and Preparing Your Data with BigQuery</div>
+                            <div class="certificate-issuer">Google Cloud, February 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Deep Learning Specialization</div>
+                            <div class="certificate-issuer">DeepLearning.AI, September 2023</div>
+                        </div>
+                    </div>
+                    
+                    <div class="certificate">
+                        <div class="certificate-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="certificate-content">
+                            <div class="certificate-title">Machine Learning Specialization</div>
+                            <div class="certificate-issuer">DeepLearning.AI & Stanford University, September 2023</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="publications" style="background-color: white;">
+        <div class="container">
+            <div class="section-header">
+                <h2>Publications & Research</h2>
+                <p>My contributions to the field of machine learning and computer vision.</p>
+            </div>
+            
+            <div class="publications">
+                <div class="publication">
+                    <div class="publication-title">A Convolutional Neural Network-Based Approach for Automatic Dog Breed Classification Using Modified-Xception Model</div>
+                    <div class="publication-authors">A Mondal, S Samanta, V Jha</div>
+                    <div class="publication-journal">Electronic Systems and Intelligent Computing: Proceedings of ESIC 2021, 61-70, 2022</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Automated people monitoring system using Opencv and raspberry pi</div>
+                    <div class="publication-authors">D Bandopadhyay, V Jha, A Bandyopadhyay, P Roy, R Halder, S Majhi</div>
+                    <div class="publication-journal">ICT Analysis and Applications, 905-913, 2022</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Feature selection for character recognition of handwritten Devanagari and Odia scripts</div>
+                    <div class="publication-authors">V Jha, K Parvathi</div>
+                    <div class="publication-journal">International Journal of Engineering Research and Technology 13 (8), 1974-198, 2020</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Machine learning based Braille transliteration of Odia language</div>
+                    <div class="publication-authors">V Jha, K Parvathi</div>
+                    <div class="publication-journal">Int. J. Innov. Technol. Explor. Eng 9, 1866-1871, 2020</div>
+                </div>
+                
+                <div class="publication">
+                    <div class="publication-title">Braille Transliteration of Hindi Handwritten Texts Using Machine Learning For Character Recognition</div>
+                    <div class="publication-authors">V Jha, K Parvathi</div>
+                    <div class="publication-journal">IJSTR 8 (10), 1188-1193, 2019</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Feel free to reach out for collaborations or opportunities.</p>
+            </div>
+            
+            <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+                <p><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> v.jha.exec@gmail.com</p>
+                <p><i class="fas fa-phone" style="margin-right: 0.5rem;"></i> +45 91679249</p>
+                <p><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> Ballerup, Denmark</p>
+                
+                <div class="social-links" style="margin-top: 2rem;">
+                    <a href="https://www.linkedin.com/in/vinod-jha/" target="_blank" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/vinodjha1988" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="https://scholar.google.com/citations?user=vinodcitations" target="_blank" class="social-link"><i class="fab fa-google"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Vinod Jha. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
